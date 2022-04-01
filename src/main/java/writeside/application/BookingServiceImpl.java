@@ -2,7 +2,6 @@ package writeside.application;
 
 import eventside.domain.CreateBookingEvent;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import writeside.EventPublisher;
 import writeside.application.api.BookingService;
@@ -13,15 +12,19 @@ import writeside.domain.repositories.BookingRepository;
 public class BookingServiceImpl implements BookingService {
 
     @Autowired
-    BookingRepository bookingRepository;
+    private BookingRepository bookingRepository;
 
     @Autowired
-    EventPublisher eventPublisher;
+    private EventPublisher eventPublisher;
 
+//    public BookingServiceImpl(BookingRepository bookingRepository, EventPublisher eventPublisher) {
+//        this.bookingRepository = bookingRepository;
+//        this.eventPublisher = eventPublisher;
+//    }
 
     public void createBooking(Booking booking){
         bookingRepository.addBooking(booking);
-        eventPublisher.publishEvent(new CreateBookingEvent(booking.));
+        eventPublisher.publishCreateBookingEvent(new CreateBookingEvent(booking));
     }
 
     public void cancelBooking(Booking booking){

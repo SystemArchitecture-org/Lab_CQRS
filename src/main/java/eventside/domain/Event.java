@@ -1,15 +1,28 @@
 package eventside.domain;
 
+import com.fasterxml.jackson.databind.JsonSerializable;
+import com.fasterxml.jackson.databind.JsonSerializer;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 
 public abstract class Event {
 
-    private final long timestamp;
+    private long timestamp;
 
-    protected Event(){
+    public Event(){
         this.timestamp = System.currentTimeMillis();
     }
+
+    public void setTimestamp(long timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public long getTimestamp() {
+        return timestamp;
+    }
+
+
 
     //    private String customer;
 //    private long timestamp;

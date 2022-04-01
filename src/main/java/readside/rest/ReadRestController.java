@@ -1,31 +1,24 @@
-package eventside.rest;
+package readside.rest;
 
-import eventside.EventRepository;
-import eventside.domain.Event;
+import eventside.domain.CreateBookingEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import readside.domain.repository.AvailableRooms;
 
 @RestController
-public class EventRestController {
+public class ReadRestController {
 
     @Autowired
-    private EventRepository repository;
+    private AvailableRooms availableRooms;
 
     @PostMapping(value = "/createBookingEvent", consumes = "application/json", produces = "application/json")
     public boolean addCreateBookingEvent(@RequestBody CreateBookingEvent event) {
         // TODO: process event in repository
-        repository.processEvent(event);
+        availableRooms.processEvent(event);
         System.out.println("Event received: " + event);
         return true;
     }
 
-    @PostMapping(value = "/cancelBookingEvent", consumes = "application/json", produces = "application/json")
-    public boolean addCancelBookingEvent(@RequestBody CancelBookingEvent event) {
-        // TODO: process event in repository
-        repository.processEvent(event);
-        System.out.println("Event received: " + event);
-        return true;
-    }
 }

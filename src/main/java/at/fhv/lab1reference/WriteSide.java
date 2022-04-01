@@ -9,6 +9,18 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import writeside.EventPublisher;
+import writeside.application.BookingServiceImpl;
+import writeside.application.api.BookingService;
+import writeside.domain.Booking;
+import writeside.domain.Customer;
+import writeside.domain.Room;
+import writeside.domain.valueobjects.Address;
+import writeside.infrastructure.BookingRepositoryImpl;
+
+import java.time.LocalDate;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.UUID;
 
 @SpringBootApplication
 @Configuration
@@ -18,18 +30,27 @@ public class WriteSide {
     @Autowired
     private EventPublisher publisher;
 
+    @Autowired
+    private BookingService bookingService;
+
     public static void main(String[] args) {
         SpringApplication.run(WriteSide.class, args);
+
+
     }
 
-//    @Bean
-//    public CommandLineRunner run() throws Exception {
-//        return args -> {
-//            Event event = new Event();
-//            event.setContent("This is the content!");
-//            event.setCustomer("Customer1");
-//            event.setTimestamp(System.currentTimeMillis());
-//            System.out.println("Result: " + publisher.publishEvent(event));
-//        };
-//    }
+    @Bean
+    public CommandLineRunner run() throws Exception {
+        return args -> {
+            List<Room> rooms = new LinkedList<Room>();
+            Room room = new Room(4);
+            rooms.add(room);
+
+            Address address = new Address("Oberradin", "6751", "Austria", "Bludenz");
+            Customer customer = new Customer(UUID.randomUUID(), "Marco", address);
+            Booking booking = new Booking(UUID.randomUUID(), rooms, customer, LocalDate.now(), LocalDate.now().plusDays(4));
+
+            bookingService.createBooking(booking);
+        };
+    }
 }
