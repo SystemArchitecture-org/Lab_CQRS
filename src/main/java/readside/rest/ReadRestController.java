@@ -16,7 +16,7 @@ public class ReadRestController {
     @PostMapping(value = "/createBookingEvent", consumes = "application/json", produces = "application/json")
     public boolean addCreateBookingEvent(@RequestBody CreateBookingEvent event) {
         // TODO: process event in repository
-        availableRooms.processEvent(event);
+        //availableRooms.processEvent(event);
         System.out.println("Event received: " + event);
         return true;
     }
