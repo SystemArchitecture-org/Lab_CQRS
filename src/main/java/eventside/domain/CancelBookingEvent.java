@@ -7,4 +7,14 @@ public class CancelBookingEvent extends Event{
         super();
         this.booking = booking;
     }
+
+    @Override
+    public String uri() {
+        return "/cancelBooking";
+    }
+
+    public String getBookingID() {
+        return bookingID;
+    }
+
 }

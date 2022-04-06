@@ -1,4 +1,4 @@
-package eventside;
+package eventside.infrastructure;
 
 import eventside.domain.Event;
 import org.springframework.stereotype.Component;

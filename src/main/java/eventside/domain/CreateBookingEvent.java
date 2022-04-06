@@ -1,18 +1,16 @@
 package eventside.domain;
 
 import writeside.domain.Booking;
-import writeside.domain.Customer;
 import writeside.domain.Room;
 
-import java.io.Serializable;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
+import java.util.Map;
 
 public class CreateBookingEvent extends Event{
 
     private String bookingID;
-    private List<String> rooms = new LinkedList<>();
+    private final List<String> rooms = new ArrayList<>();
 
     private String customerName;
     private String customerAddress;
@@ -32,7 +30,7 @@ public class CreateBookingEvent extends Event{
         this.customerName = booking.getCustomer().getName();
         List<Room> bookingRooms = booking.getRooms();
         for (Room room:bookingRooms) {
-            rooms.add(Integer.toString(room.getRoomNumber()));
+            rooms.add(room.getRoomNumber().toString());
         }
         this.fromDate = booking.getFromDate().toString();
         this.toDate = booking.getToDate().toString();

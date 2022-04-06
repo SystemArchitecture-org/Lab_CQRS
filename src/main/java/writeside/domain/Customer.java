@@ -5,9 +5,11 @@ import writeside.domain.valueobjects.Address;
 import java.util.UUID;
 
 public class Customer {
-    private UUID customerID;
-    private String name;
-    private Address address;
+
+    private final UUID customerID;
+
+    private final String name;
+    private final Address address;
 
     public Customer(UUID customerId, String name, Address address) {
         this.customerID = customerId;
@@ -26,4 +28,5 @@ public class Customer {
     public Address getAddress() {
         return address;
     }
+
 }

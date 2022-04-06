@@ -10,7 +10,9 @@ import java.util.List;
 
 @Component
 public class BookingRepositoryImpl implements BookingRepository {
-    private List<Booking> bookingDataBase = new LinkedList<>();
+
+    private final List<Booking> bookingDataBase = new LinkedList<>();
+
 
     @Override
     public void addBooking(Booking booking){
@@ -21,4 +23,5 @@ public class BookingRepositoryImpl implements BookingRepository {
     public void removeBooking(Booking booking) {
         bookingDataBase.remove(booking);
     }
+
 }

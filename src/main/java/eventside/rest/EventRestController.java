@@ -1,7 +1,9 @@
 package eventside.rest;
 
-import eventside.EventRepository;
-import eventside.domain.Event;
+import eventside.infrastructure.EventRepository;
+import eventside.domain.CancelBookingEvent;
+import eventside.domain.CreateBookingEvent;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

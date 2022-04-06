@@ -11,7 +11,7 @@ import reactor.core.publisher.Mono;
 @Component
 public class EventPublisher {
 
-    private final WebClient localApiClient = WebClient.create("http://localhost:8080");
+    private final WebClient localApiClient = WebClient.create("http://localhost:8083");
 
     public EventPublisher() {
     }

@@ -8,6 +8,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+
+import writeside.domain.repositories.BookingRepository;
 import writeside.EventPublisher;
 import writeside.application.BookingServiceImpl;
 import writeside.application.api.BookingService;
@@ -33,6 +35,12 @@ public class WriteSide {
     @Autowired
     private BookingService bookingService;
 
+    @Autowired
+    private BookingRepository bookingRepository;
+
+    @Autowired
+    private RoomRepository roomRepository;
+
     public static void main(String[] args) {
         SpringApplication.run(WriteSide.class, args);
 
@@ -42,15 +50,24 @@ public class WriteSide {
     @Bean
     public CommandLineRunner run() throws Exception {
         return args -> {
-            List<Room> rooms = new LinkedList<Room>();
-            Room room = new Room(4);
-            rooms.add(room);
+            Optional<Room> roomOpt = roomRepository.getRoomByRoomNumber(101);
 
-            Address address = new Address("Oberradin", "6751", "Austria", "Bludenz");
-            Customer customer = new Customer(UUID.randomUUID(), "Marco", address);
-            Booking booking = new Booking(UUID.randomUUID(), rooms, customer, LocalDate.now(), LocalDate.now().plusDays(4));
+            if(roomOpt.isPresent()){
+                List<Room> rooms = new LinkedList<>();
+                Room room = roomOpt.get();
+                rooms.add(room);
 
-            bookingService.createBooking(booking);
+
+                Address address = new Address("Oberradin", "6751", "Austria", "Bludenz");
+                Customer customer = new Customer(UUID.randomUUID(), "Marco", address);
+                Booking booking = new Booking(UUID.randomUUID(), rooms, customer, LocalDate.now(), LocalDate.now().plusDays(4));
+
+                bookingService.createBooking(booking);
+
+
+            }
+
+
         };
     }
 }
