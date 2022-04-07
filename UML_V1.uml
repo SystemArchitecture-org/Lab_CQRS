@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>D:/Studium/BSc Semester 4/System Architectures/Lab_CQRS/src/main/java</OriginalElement>
+  <nodes>
+    <node x="-1944.210037152186" y="-766.4566275207028">at.fhv.lab1reference.WriteSide</node>
+    <node x="-1306.2690148496915" y="-764.2748093388847">writeside.domain.valueobjects.Address</node>
+    <node x="-1126.99040202825" y="-764.2748093388847">writeside.domain.Room</node>
+    <node x="-1581.2749003984059" y="-80.92828685258962">eventside.domain.CreateBookingEvent</node>
+    <node x="-1944.210037152186" y="-565.2748093388847">writeside.WritesidePortConfigurator</node>
+    <node x="-1029.2809332291433" y="989.0358565737051">readside.infrastructure.AvailableRoomsRepositoryImpl</node>
+    <node x="-1517.5476276711331" y="-764.2748093388847">writeside.domain.Booking</node>
+    <node x="-565.2809332291433" y="775.0358565737051">readside.domain.repositories.BookingRepository</node>
+    <node x="-569.3599239406005" y="-640.4566275207029">writeside.infrastructure.RoomRepositoryImpl</node>
+    <node x="-526.5856573705182" y="-79.96414342629481">eventside.rest.EventRestController</node>
+    <node x="-1944.210037152186" y="-475.09299115706654">writeside.EventPublisher</node>
+    <node x="-565.2809332291433" y="951.0358565737051">readside.infrastructure.BookingRepositoryImpl</node>
+    <node x="-1931.4827644249133" y="-168.52084405558372">at.fhv.lab1reference.EventSide</node>
+    <node x="-1064.3784860557766" y="-80.92828685258962">eventside.domain.Subscriber</node>
+    <node x="-569.3599239406005" y="-766.4566275207028">writeside.domain.repositories.RoomRepository</node>
+    <node x="-1440.7369697740173" y="775.0358565737051">readside.projection.api.EventProcessorService</node>
+    <node x="-1440.7369697740173" y="927.5959424343469">readside.projection.EventProcessorServiceImpl</node>
+    <node x="-209.35992394060054" y="-766.4566275207028">writeside.domain.repositories.BookingRepository</node>
+    <node x="-215.35992394060054" y="-640.4566275207029">writeside.infrastructure.BookingRepositoryImpl</node>
+    <node x="-1314.2749003984059" y="-80.92828685258962">eventside.domain.CancelBookingEvent</node>
+    <node x="-1126.99040202825" y="-610.0929911570664">writeside.domain.Customer</node>
+    <node x="-844.3599239406005" y="-766.4566275207028">writeside.application.api.BookingService</node>
+    <node x="-1931.4827644249133" y="568.361554297479">at.fhv.lab1reference.ReadSide</node>
+    <node x="-137.81052664139247" y="775.0358565737051">readside.rest.ReadRestController</node>
+    <node x="-1427.5249003984059" y="-251.92828685258962">eventside.domain.Event</node>
+    <node x="-1029.2809332291433" y="775.0358565737051">readside.domain.repositories.AvailableRoomsRepository</node>
+    <node x="-868.3599239406005" y="-640.4566275207029">writeside.application.BookingServiceImpl</node>
+    <node x="-1931.4827644249133" y="-80.92828685258962">eventside.EventSidePortConfigurator</node>
+    <node x="-1931.4827644249133" y="661.0856573705182">readside.ReadSidePortConfigurator</node>
+    <node x="-825.4820717131474" y="-80.92828685258962">eventside.infrastructure.EventRepository</node>
+    <node x="-1715.1930063188913" y="775.0358565737051">readside.domain.AvailableRoom</node>
+    <node x="-1931.4827644249133" y="775.0358565737051">readside.domain.BookedStay</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="eventside.domain.CreateBookingEvent" target="eventside.domain.Event" relationship="GENERALIZATION">
+      <point x="0.0" y="-247.5" />
+      <point x="-1457.7749003984059" y="-105.92828685258962" />
+      <point x="-1337.0249003984059" y="-105.92828685258962" />
+      <point x="0.0" y="60.5" />
+    </edge>
+    <edge source="readside.projection.EventProcessorServiceImpl" target="readside.projection.api.EventProcessorService" relationship="REALIZATION">
+      <point x="0.0" y="-60.5" />
+      <point x="0.0" y="38.0" />
+    </edge>
+    <edge source="readside.infrastructure.BookingRepositoryImpl" target="readside.domain.repositories.BookingRepository" relationship="REALIZATION">
+      <point x="0.0" y="-71.5" />
+      <point x="0.0" y="63.0" />
+    </edge>
+    <edge source="writeside.infrastructure.BookingRepositoryImpl" target="writeside.domain.repositories.BookingRepository" relationship="REALIZATION">
+      <point x="0.0" y="-49.5" />
+      <point x="0.0" y="38.0" />
+    </edge>
+    <edge source="eventside.domain.CancelBookingEvent" target="eventside.domain.Event" relationship="GENERALIZATION">
+      <point x="0.0" y="-49.5" />
+      <point x="-1216.2749003984059" y="-105.92828685258962" />
+      <point x="-1337.0249003984059" y="-105.92828685258962" />
+      <point x="0.0" y="60.5" />
+    </edge>
+    <edge source="writeside.infrastructure.RoomRepositoryImpl" target="writeside.domain.repositories.RoomRepository" relationship="REALIZATION">
+      <point x="0.0" y="-49.5" />
+      <point x="0.0" y="38.0" />
+    </edge>
+    <edge source="readside.infrastructure.AvailableRoomsRepositoryImpl" target="readside.domain.repositories.AvailableRoomsRepository" relationship="REALIZATION">
+      <point x="0.0" y="-93.5" />
+      <point x="0.0" y="82.0" />
+    </edge>
+    <edge source="writeside.application.BookingServiceImpl" target="writeside.application.api.BookingService" relationship="REALIZATION">
+      <point x="0.0" y="-60.5" />
+      <point x="0.0" y="38.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.4" showDependencies="false" x="-940.0" y="549.0" />
+  <SelectedNodes>
+    <node>readside.projection.EventProcessorServiceImpl</node>
+    <node>readside.infrastructure.AvailableRoomsRepositoryImpl</node>
+    <node>readside.domain.repositories.BookingRepository</node>
+    <node>readside.rest.ReadRestController</node>
+    <node>readside.domain.repositories.AvailableRoomsRepository</node>
+    <node>readside.infrastructure.BookingRepositoryImpl</node>
+    <node>readside.ReadSidePortConfigurator</node>
+    <node>readside.domain.AvailableRoom</node>
+    <node>readside.projection.api.EventProcessorService</node>
+    <node>readside.domain.BookedStay</node>
+    <node>at.fhv.lab1reference.ReadSide</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
