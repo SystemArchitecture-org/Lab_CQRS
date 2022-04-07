@@ -1,11 +1,5 @@
 package eventside.domain;
 
-import com.fasterxml.jackson.databind.JsonSerializable;
-import com.fasterxml.jackson.databind.JsonSerializer;
-
-import java.time.LocalDate;
-import java.time.LocalTime;
-
 public abstract class Event {
 
     private long timestamp;
