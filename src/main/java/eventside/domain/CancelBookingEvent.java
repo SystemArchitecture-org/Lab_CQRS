@@ -1,12 +1,11 @@
 package eventside.domain;
 
-public class CancelBookingEvent extends Event{
+public class CancelBookingEvent extends Event {
+
     private String bookingID;
 
-    public CancelBookingEvent(){
-
+    public CancelBookingEvent() {
     }
-
 
     public CancelBookingEvent(String bookingID) {
         super();

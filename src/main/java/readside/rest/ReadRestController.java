@@ -2,13 +2,15 @@ package readside.rest;
 
 import eventside.domain.CancelBookingEvent;
 import eventside.domain.CreateBookingEvent;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+
 import readside.projection.api.EventProcessorService;
 import readside.domain.AvailableRoom;
 import readside.domain.BookedStay;
 import readside.domain.repositories.AvailableRoomsRepository;
 import readside.domain.repositories.BookingRepository;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -25,8 +27,6 @@ public class ReadRestController {
 
     @Autowired
     private BookingRepository bookingRepository;
-
-
 
     @PostMapping(value = "/createBookingEvent", consumes = "application/json", produces = "application/json")
     public boolean createBookingEvent(@RequestBody CreateBookingEvent event) {

@@ -41,12 +41,12 @@ public class AvailableRoomsRepositoryImpl implements AvailableRoomsRepository {
         availableRooms.remove(availableRoom);
     }
 
-    public List<AvailableRoom> getFreeRooms(LocalDate from, LocalDate to, int personCount){
+    public List<AvailableRoom> getFreeRooms(LocalDate from, LocalDate to, int personCount) {
         List<AvailableRoom> freeRooms = new LinkedList<>();
 
-        for (AvailableRoom availableRoom:availableRooms) {
-            if(availableRoom.getAvailableFrom().isBefore(from) && !availableRoom.getAvailableTo().isAfter(from) ||
-            !availableRoom.getAvailableFrom().isBefore(to) && availableRoom.getAvailableTo().isAfter(to)){
+        for (AvailableRoom availableRoom : availableRooms) {
+            if (availableRoom.getAvailableFrom().isBefore(from) && !availableRoom.getAvailableTo().isAfter(from) ||
+                    !availableRoom.getAvailableFrom().isBefore(to) && availableRoom.getAvailableTo().isAfter(to)) {
                 //do nothing
             } else {
                 freeRooms.add(availableRoom);

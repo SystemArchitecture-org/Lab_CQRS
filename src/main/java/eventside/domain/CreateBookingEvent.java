@@ -5,9 +5,8 @@ import writeside.domain.Room;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
-public class CreateBookingEvent extends Event{
+public class CreateBookingEvent extends Event {
 
     private String bookingID;
     private final List<String> rooms = new ArrayList<>();
@@ -35,11 +34,16 @@ public class CreateBookingEvent extends Event{
         this.customerAddressCity = booking.getCustomer().getAddress().getCity();
         this.customerName = booking.getCustomer().getName();
         List<Room> bookingRooms = booking.getRooms();
-        for (Room room:bookingRooms) {
+        for (Room room : bookingRooms) {
             rooms.add(room.getRoomNumber().toString());
         }
         this.fromDate = booking.getFromDate().toString();
         this.toDate = booking.getToDate().toString();
+    }
+
+    @Override
+    public String uri() {
+        return "/createBookingEvent";
     }
 
     public String getBookingID() {
@@ -52,10 +56,6 @@ public class CreateBookingEvent extends Event{
 
     public String getCustomerName() {
         return customerName;
-    }
-
-    public String uri(){
-        return "/createBookingEvent";
     }
 
     public String getCustomerAddressStreet() {

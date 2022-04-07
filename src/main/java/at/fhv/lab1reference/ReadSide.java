@@ -12,8 +12,6 @@ public class ReadSide {
 
     public static void main(String[] args) {
         SpringApplication.run(ReadSide.class, args);
-
-
     }
 
 }

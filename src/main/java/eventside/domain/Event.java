@@ -1,16 +1,10 @@
 package eventside.domain;
 
-import com.fasterxml.jackson.databind.JsonSerializable;
-import com.fasterxml.jackson.databind.JsonSerializer;
-
-import java.time.LocalDate;
-import java.time.LocalTime;
-
 public abstract class Event {
 
     private long timestamp;
 
-    public Event(){
+    public Event() {
         this.timestamp = System.currentTimeMillis();
     }
 
@@ -22,12 +16,11 @@ public abstract class Event {
         return timestamp;
     }
 
-    public String uri(){
+    public String uri() {
         return "/";
     }
 
-
-    //    private String customer;
+//    private String customer;
 //    private long timestamp;
 //    private String content;
 //
