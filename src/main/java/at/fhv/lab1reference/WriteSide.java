@@ -1,6 +1,5 @@
 package at.fhv.lab1reference;
 
-import eventside.domain.Event;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -9,16 +8,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
-import writeside.domain.repositories.BookingRepository;
-import writeside.EventPublisher;
-import writeside.application.BookingServiceImpl;
 import writeside.application.api.BookingService;
 import writeside.domain.Booking;
 import writeside.domain.Customer;
 import writeside.domain.Room;
 import writeside.domain.repositories.RoomRepository;
 import writeside.domain.valueobjects.Address;
-import writeside.infrastructure.BookingRepositoryImpl;
 
 import java.time.LocalDate;
 import java.util.LinkedList;
@@ -32,29 +27,21 @@ import java.util.UUID;
 public class WriteSide {
 
     @Autowired
-    private EventPublisher publisher;
-
-    @Autowired
     private BookingService bookingService;
-
-    @Autowired
-    private BookingRepository bookingRepository;
 
     @Autowired
     private RoomRepository roomRepository;
 
     public static void main(String[] args) {
         SpringApplication.run(WriteSide.class, args);
-
-
     }
 
     @Bean
-    public CommandLineRunner run() throws Exception {
+    public CommandLineRunner run() {
         return args -> {
             Optional<Room> roomOpt = roomRepository.getRoomByRoomNumber(101);
 
-            if(roomOpt.isPresent()){
+            if (roomOpt.isPresent()) {
                 List<Room> rooms = new LinkedList<>();
                 Room room = roomOpt.get();
                 rooms.add(room);
@@ -65,8 +52,7 @@ public class WriteSide {
 
                 bookingService.createBooking(booking);
             }
-
-
         };
     }
+
 }

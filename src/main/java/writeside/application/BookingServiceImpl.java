@@ -18,18 +18,19 @@ public class BookingServiceImpl implements BookingService {
     @Autowired
     private EventPublisher eventPublisher;
 
-//    public BookingServiceImpl(BookingRepository bookingRepository, EventPublisher eventPublisher) {
-//        this.bookingRepository = bookingRepository;
-//        this.eventPublisher = eventPublisher;
-//    }
-
     public void createBooking(Booking booking){
         bookingRepository.addBooking(booking);
-        eventPublisher.publishCreateBookingEvent(new CreateBookingEvent(booking));
+
+        if (eventPublisher.publishCreateBookingEvent(new CreateBookingEvent(booking))) {
+            System.out.println("Create booking event successfully published");
+        }
     }
 
     public void cancelBooking(Booking booking){
         bookingRepository.removeBooking(booking);
-        eventPublisher.publishCancelBookingEvent(new CancelBookingEvent(booking.getBookingID().toString()));
+
+        if (eventPublisher.publishCancelBookingEvent(new CancelBookingEvent(booking.getBookingID().toString()))) {
+            System.out.println("Cancel booking event successfully published");
+        }
     }
 }

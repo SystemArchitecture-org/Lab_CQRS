@@ -12,31 +12,31 @@ import java.util.UUID;
 
 @Component
 public class BookingRepositoryImpl implements BookingRepository {
-    private List<BookedStay> bookingDatabase = new LinkedList<>();
 
+    private final List<BookedStay> bookingDatabase = new LinkedList<>();
 
-    public void addBooking(BookedStay booking){
+    public void addBooking(BookedStay booking) {
         bookingDatabase.add(booking);
     }
 
-    public void cancelBooking(BookedStay booking){
+    public void cancelBooking(BookedStay booking) {
         bookingDatabase.remove(booking);
     }
 
-    public List<BookedStay> getBookings(LocalDate from, LocalDate to){
+    public List<BookedStay> getBookings(LocalDate from, LocalDate to) {
         List<BookedStay> bookings = new LinkedList<>();
 
-        for (BookedStay booking:bookingDatabase) {
-            if(!booking.getFromDate().isBefore(from) && !booking.getToDate().isAfter(to)){
+        for (BookedStay booking : bookingDatabase) {
+            if (!booking.getFromDate().isBefore(from) && !booking.getToDate().isAfter(to)) {
                 bookings.add(booking);
             }
         }
+
         return bookings;
     }
 
-    public Optional<BookedStay> getBookingById(UUID bookingId){
+    public Optional<BookedStay> getBookingById(UUID bookingId) {
         return bookingDatabase.stream().filter(b -> b.getBookingID().equals(bookingId)).findFirst();
-
     }
 }
 

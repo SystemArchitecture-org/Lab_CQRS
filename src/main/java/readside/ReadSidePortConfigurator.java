@@ -11,4 +11,5 @@ public class ReadSidePortConfigurator implements WebServerFactoryCustomizer<Conf
     public void customize(ConfigurableWebServerFactory factory) {
         factory.setPort(8082);
     }
+
 }

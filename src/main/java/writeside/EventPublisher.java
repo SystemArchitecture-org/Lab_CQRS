@@ -2,7 +2,7 @@ package writeside;
 
 import eventside.domain.CancelBookingEvent;
 import eventside.domain.CreateBookingEvent;
-import eventside.domain.Event;
+
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -18,6 +18,7 @@ public class EventPublisher {
 
     public Boolean publishCreateBookingEvent(CreateBookingEvent event) {
         System.out.println(event);
+
         return localApiClient
                 .post()
                 .uri("/createBookingEvent/")
@@ -31,6 +32,7 @@ public class EventPublisher {
 
     public Boolean publishCancelBookingEvent(CancelBookingEvent event) {
         System.out.println(event);
+
         return localApiClient
                 .post()
                 .uri("/cancelBookingEvent/")

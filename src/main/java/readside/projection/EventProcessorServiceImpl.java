@@ -3,18 +3,18 @@ package readside.projection;
 import eventside.domain.CancelBookingEvent;
 import eventside.domain.CreateBookingEvent;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
-import org.springframework.stereotype.Component;
 import readside.domain.AvailableRoom;
 import readside.domain.BookedStay;
 import readside.domain.repositories.AvailableRoomsRepository;
 import readside.domain.repositories.BookingRepository;
-
 import readside.projection.api.EventProcessorService;
+
 import writeside.domain.Customer;
 import writeside.domain.Room;
 import writeside.domain.valueobjects.Address;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

@@ -14,5 +14,4 @@ public class EventSide {
         SpringApplication.run(EventSide.class, args);
     }
 
-
 }

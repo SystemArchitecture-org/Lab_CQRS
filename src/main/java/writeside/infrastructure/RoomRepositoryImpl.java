@@ -12,7 +12,8 @@ import java.util.Optional;
 
 @Repository
 public class RoomRepositoryImpl implements RoomRepository {
-    private List<Room> roomDatabase = new LinkedList<>();
+
+    private final List<Room> roomDatabase = new LinkedList<>();
 
     public RoomRepositoryImpl() {
         roomDatabase.add(new Room(101, 1));
@@ -35,6 +36,5 @@ public class RoomRepositoryImpl implements RoomRepository {
     public void createRoom(Room room) {
         roomDatabase.add(room);
     }
-
 
 }

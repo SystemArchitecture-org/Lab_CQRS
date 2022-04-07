@@ -8,11 +8,12 @@ import java.util.List;
 import java.util.UUID;
 
 public class Booking implements Serializable {
-    private UUID bookingID;
-    private List<Room> rooms;
-    private Customer customer;
-    private LocalDate fromDate;
-    private LocalDate toDate;
+
+    private final UUID bookingID;
+    private final List<Room> rooms;
+    private final Customer customer;
+    private final LocalDate fromDate;
+    private final LocalDate toDate;
 
     public Booking(UUID bookingID, List<Room> rooms, Customer customer, LocalDate fromDate, LocalDate toDate) {
         this.bookingID = bookingID;

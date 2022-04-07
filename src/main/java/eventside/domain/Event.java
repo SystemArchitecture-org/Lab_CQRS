@@ -10,7 +10,7 @@ public abstract class Event {
 
     private long timestamp;
 
-    public Event(){
+    public Event() {
         this.timestamp = System.currentTimeMillis();
     }
 
@@ -22,12 +22,11 @@ public abstract class Event {
         return timestamp;
     }
 
-    public String uri(){
+    public String uri() {
         return "/";
     }
 
-
-    //    private String customer;
+//    private String customer;
 //    private long timestamp;
 //    private String content;
 //
