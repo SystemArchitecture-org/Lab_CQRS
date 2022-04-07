@@ -22,6 +22,9 @@ public abstract class Event {
         return timestamp;
     }
 
+    public String uri(){
+        return "/";
+    }
 
 
     //    private String customer;

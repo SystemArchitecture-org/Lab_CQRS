@@ -33,7 +33,7 @@ public class EventPublisher {
         System.out.println(event);
         return localApiClient
                 .post()
-                .uri("/createBookingEvent/")
+                .uri("/cancelBookingEvent/")
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
                 .body(Mono.just(event), CancelBookingEvent.class)

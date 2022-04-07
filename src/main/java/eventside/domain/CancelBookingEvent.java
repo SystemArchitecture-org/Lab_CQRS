@@ -1,16 +1,16 @@
 package eventside.domain;
 
 public class CancelBookingEvent extends Event{
-    private String booking;
+    private final String bookingID;
 
-    public CancelBookingEvent(String booking) {
+    public CancelBookingEvent(String bookingID) {
         super();
-        this.booking = booking;
+        this.bookingID = bookingID;
     }
 
     @Override
     public String uri() {
-        return "/cancelBooking";
+        return "/cancelBookingEvent";
     }
 
     public String getBookingID() {

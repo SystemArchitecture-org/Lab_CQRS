@@ -16,12 +16,14 @@ import writeside.application.api.BookingService;
 import writeside.domain.Booking;
 import writeside.domain.Customer;
 import writeside.domain.Room;
+import writeside.domain.repositories.RoomRepository;
 import writeside.domain.valueobjects.Address;
 import writeside.infrastructure.BookingRepositoryImpl;
 
 import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @SpringBootApplication

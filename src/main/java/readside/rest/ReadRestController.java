@@ -1,5 +1,6 @@
 package readside.rest;
 
+import eventside.domain.CancelBookingEvent;
 import eventside.domain.CreateBookingEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -25,12 +26,38 @@ public class ReadRestController {
     @Autowired
     private BookingRepository bookingRepository;
 
+
+
     @PostMapping(value = "/createBookingEvent", consumes = "application/json", produces = "application/json")
-    public boolean addCreateBookingEvent(@RequestBody CreateBookingEvent event) {
-        // TODO: process event in repository
-        //availableRooms.processEvent(event);
+    public boolean createBookingEvent(@RequestBody CreateBookingEvent event) {
+
+        eventProcessorService.processCreateBookingEvent(event);
         System.out.println("Event received: " + event);
         return true;
+    }
+
+    @PostMapping(value = "/cancelBookingEvent", consumes = "application/json", produces = "application/json")
+    public boolean cancelBookingEvent(@RequestBody CancelBookingEvent event){
+
+        eventProcessorService.processCancelBookingEvent(event);
+        System.out.println("Event received: " + event);
+        return true;
+    }
+
+    @GetMapping(value = "/freeRooms")
+    public List<AvailableRoom> getFreeRooms(@RequestParam String from, @RequestParam String to, @RequestParam int personCount) {
+        LocalDate fromDate = LocalDate.parse(from, DateTimeFormatter.ISO_DATE);
+        LocalDate toDate = LocalDate.parse(to, DateTimeFormatter.ISO_DATE);
+
+        return availableRoomsRepository.getFreeRooms(fromDate, toDate, personCount);
+    }
+
+    @GetMapping(value = "/bookings")
+    public List<BookedStay> getFreeRooms(@RequestParam String from, @RequestParam String to) {
+        LocalDate fromDate = LocalDate.parse(from, DateTimeFormatter.ISO_DATE);
+        LocalDate toDate = LocalDate.parse(to, DateTimeFormatter.ISO_DATE);
+
+        return bookingRepository.getBookings(fromDate, toDate);
     }
 
 }

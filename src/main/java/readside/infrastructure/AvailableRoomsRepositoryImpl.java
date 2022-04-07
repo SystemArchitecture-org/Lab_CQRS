@@ -45,7 +45,13 @@ public class AvailableRoomsRepositoryImpl implements AvailableRoomsRepository {
         List<AvailableRoom> freeRooms = new LinkedList<>();
 
         for (AvailableRoom availableRoom:availableRooms) {
-            if(!availableRoom.getAvailableFrom().isAfter(from) && !availableRoom.getAvailableTo().isBefore(to) && availableRoom.getNumberOfBeds() >= personCount){
+//            if(!availableRoom.getAvailableFrom().isAfter(from) && !availableRoom.getAvailableTo().isBefore(to) && availableRoom.getNumberOfBeds() >= personCount){
+//                freeRooms.add(availableRoom);
+//            }
+            if(availableRoom.getAvailableFrom().isBefore(from) && !availableRoom.getAvailableTo().isAfter(from) ||
+            availableRoom.getAvailableFrom().isAfter(to) && availableRoom.getAvailableTo().isAfter(to)){
+                //do nothing
+            } else {
                 freeRooms.add(availableRoom);
             }
         }

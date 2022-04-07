@@ -1,5 +1,6 @@
 package writeside.application;
 
+import eventside.domain.CancelBookingEvent;
 import eventside.domain.CreateBookingEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,5 +30,6 @@ public class BookingServiceImpl implements BookingService {
 
     public void cancelBooking(Booking booking){
         bookingRepository.removeBooking(booking);
+        eventPublisher.publishCancelBookingEvent(new CancelBookingEvent(booking.getBookingID().toString()));
     }
 }

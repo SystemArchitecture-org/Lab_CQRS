@@ -7,6 +7,7 @@ import eventside.domain.CreateBookingEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -18,8 +19,8 @@ public class EventRestController {
     @PostMapping(value = "/createBookingEvent", consumes = "application/json", produces = "application/json")
     public boolean addCreateBookingEvent(@RequestBody CreateBookingEvent event) {
         // TODO: process event in repository
-        repository.processEvent(event);
         System.out.println("Event received: " + event);
+        repository.processEvent(event);
         return true;
     }
 
@@ -28,6 +29,12 @@ public class EventRestController {
         // TODO: process event in repository
         repository.processEvent(event);
         System.out.println("Event received: " + event);
+        return true;
+    }
+
+    @PostMapping
+    public boolean subscribe(@RequestParam String host) {
+        repository.attach(host);
         return true;
     }
 }
