@@ -32,6 +32,7 @@ public class EventProcessorServiceImpl implements EventProcessorService {
     BookingRepository bookingRepository;
 
     public void processCreateBookingEvent(CreateBookingEvent createBookingEvent) {
+
         List<AvailableRoom> availableRooms = availableRoomsRepository.getAvailableRooms();
 
         LocalDate cbeFromDate = LocalDate.parse(createBookingEvent.getFromDate());
@@ -109,7 +110,7 @@ public class EventProcessorServiceImpl implements EventProcessorService {
 
         if (bookingOpt.isPresent()) {
             BookedStay booking = bookingOpt.get();
-            bookingRepository.cancelBooking(booking);
+
             LocalDate bookingFromDate = booking.getFromDate();
             LocalDate bookingToDate = booking.getToDate();
 
@@ -139,6 +140,8 @@ public class EventProcessorServiceImpl implements EventProcessorService {
                     availableRoomsRepository.add(new AvailableRoom(room.getRoomNumber(), room.getNumberOfBeds(), booking.getFromDate(), booking.getToDate()));
                 }
             }
+
+            bookingRepository.cancelBooking(booking);
         }
     }
 
