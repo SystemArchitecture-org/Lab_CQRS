@@ -59,14 +59,11 @@ public class WriteSide {
                 Room room = roomOpt.get();
                 rooms.add(room);
 
-
                 Address address = new Address("Oberradin", "6751", "Austria", "Bludenz");
                 Customer customer = new Customer(UUID.randomUUID(), "Marco", address);
                 Booking booking = new Booking(UUID.randomUUID(), rooms, customer, LocalDate.now(), LocalDate.now().plusDays(4));
 
                 bookingService.createBooking(booking);
-
-
             }
 
 
