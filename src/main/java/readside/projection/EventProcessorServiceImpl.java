@@ -109,7 +109,7 @@ public class EventProcessorServiceImpl implements EventProcessorService {
 
         if (bookingOpt.isPresent()) {
             BookedStay booking = bookingOpt.get();
-
+            bookingRepository.cancelBooking(booking);
             LocalDate bookingFromDate = booking.getFromDate();
             LocalDate bookingToDate = booking.getToDate();
 
